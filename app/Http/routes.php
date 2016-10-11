@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+//追加
+// Authentication Routes...
+$this->get('admin/login', 'AdminAuth\AuthController@showLoginForm');
+$this->post('admin/login', 'AdminAuth\AuthController@login');
+$this->get('admin/logout', 'AdminAuth\AuthController@logout');
+// Registration Routes...
+$this->get('admin/register', 'AdminAuth\AuthController@showRegistrationForm');
+$this->post('admin/register', 'AdminAuth\AuthController@register');
+// Password Reset Routes...
+$this->get('admin/password/reset/{token?}', 'AdminAuth\PasswordController@showResetForm');
+$this->post('admin/password/email', 'AdminAuth\PasswordController@sendResetLinkEmail');
+$this->post('admin/password/reset', 'AdminAuth\PasswordController@reset');
+//追加
+
+Route::get('/home', 'HomeController@index');
+Route::get('admin/home','AdminHomeController@index');
