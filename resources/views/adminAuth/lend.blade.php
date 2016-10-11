@@ -21,8 +21,9 @@
         <td><a class="btn btn-info" href="/lend/{{{ $lend->id }}}/edit">編集</a></td>
         {!! Form::open(['route'=>['lend.destroy',$lend->id],'method'=>'DELETE']) !!}
         <td><button class="btn btn-danger" type="submit">削除</button></td>
+        {!! Form::close() !!}
         <td><button class="btn btn-log" type="submit">ログ</button></td>　　<!--- ログのsubmitとは？ -->
-    {!! Form::close() !!}
+    
     </tr>
     @endforeach
     </tbody>

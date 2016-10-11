@@ -32,3 +32,7 @@ $this->post('admin/password/reset', 'AdminAuth\PasswordController@reset');
 
 Route::get('/home', 'HomeController@index');
 Route::get('admin/home','AdminHomeController@index');
+Route::delete('lend/destroy',[
+	'as' => 'lend.destroy',
+	'uses' => 'AdminHomeController@destroy',
+	]);
