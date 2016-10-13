@@ -40,19 +40,27 @@ class AdminHomeController extends Controller
         return view('adminAuth.lend',compact('lends'));
     }
 
+
+
     public function create()
     {
         return view('adminAuth.create');
     }
 
 
+    /**
+     * 新しいブログポストの保存
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+
     public function store(Request $request)
     {
         $input = $request->all();
         $this->lend->fill($input);
         $this->lend->save();
-
-        return redirect()->to('lend');
+        return redirect()->to('adminAuth.lend');
     }
 
 
@@ -80,23 +88,5 @@ class AdminHomeController extends Controller
         return redirect()->to('adminAuth.lend');
     }
 
-    //ここからadmin編集
-    // private $lend;
-
-    // public function __construct(Admin $lend)
-    // {
-    //     $this->lend = $lend;
-    // }
-
-    // /**
-    // * Display a listing of the resource.
-    // *
-    // * @return Response
-    // */ 
-
-    // public function index()
-    // {
-    //     $lends = $this->lend->all();
-    //     return view('lend.index',compact('lends'));
-    // }
+    
 }

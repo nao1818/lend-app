@@ -30,9 +30,23 @@ $this->post('admin/password/email', 'AdminAuth\PasswordController@sendResetLinkE
 $this->post('admin/password/reset', 'AdminAuth\PasswordController@reset');
 //追加
 
+
+
+
+
+
 Route::get('/home', 'HomeController@index');
 Route::get('admin/home','AdminHomeController@index');
 Route::delete('lend/destroy',[
 	'as' => 'lend.destroy',
 	'uses' => 'AdminHomeController@destroy',
 	]);
+
+// Route::post('lend/store');
+
+Route::post('lend/store',[
+	'as' => 'lend.store',
+	'uses' => 'AdminHomeController@store',
+	]);
+
+Route::get('/lend/create','AdminHomeController@create');
