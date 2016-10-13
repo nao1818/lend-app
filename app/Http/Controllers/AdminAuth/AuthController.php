@@ -28,7 +28,7 @@ class AuthController extends Controller
      * @var string
      **/
     protected $redirectTo = '/admin/home';
-
+    
     protected $guard = 'admin';
     protected $loginView = 'adminAuth.login';
     protected $registerView = 'adminAuth.register';

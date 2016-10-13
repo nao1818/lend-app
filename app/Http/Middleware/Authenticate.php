@@ -21,7 +21,6 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                // return redirect()->guest('login'); //ここを追加するとadminhomeがuserloginにつながる。
                 if($guard === 'admin'){
                     return redirect()->guest('admin/login');
                 }else{
