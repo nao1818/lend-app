@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Lend;
 
 class AdminHomeController extends Controller
 {
@@ -12,10 +13,10 @@ class AdminHomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Lend $lend)
     {
         $this->middleware('auth:admin');
-        // $this->lend = $lend;
+        $this->lend = $lend;
     }
 
     /**
@@ -24,10 +25,10 @@ class AdminHomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        return view('admin.home');
-    }
+    // public function index()
+    // {
+    //     return view('admin.home');
+    // }
 
     // *
     // * Display a listing of the resource.
@@ -37,18 +38,18 @@ class AdminHomeController extends Controller
 
      
 
-    // public function index()
-    // {
-    //     $lends = $this->lend->all();
-    //     return view('adminAuth.lend',compact('lends'));
-    // }
+    public function index()
+    {
+        $lends = $this->lend->all();
+        return view('adminAuth.lend',compact('lends'));
+    }
 
 
 
-    // public function create()
-    // {
-    //     return view('adminAuth.create');
-    // }
+    public function create()
+    {
+        return view('adminAuth.create');
+    }
 
 
     // /**
@@ -58,13 +59,13 @@ class AdminHomeController extends Controller
     //  * @return Response
     //  */
 
-    // public function store(Request $request)
-    // {
-    //     $input = $request->all();
-    //     $this->lend->fill($input);
-    //     $this->lend->save();
-    //     return redirect()->to('adminAuth.lend');
-    // }
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $this->lend->fill($input);
+        $this->lend->save();
+        return redirect()->to('adminAuth.lend');
+    }
 
 
     // public function edit($id)
@@ -83,13 +84,13 @@ class AdminHomeController extends Controller
 
 
 
-    // public function destroy($id)
-    // {
-    //     $data = $this->lend->find($id);
-    //     $data->delete();
+    public function destroy($id)
+    {
+        $data = $this->lend->find($id);
+        $data->delete();
 
-    //     return redirect()->to('adminAuth.lend');
-    // }
+        return redirect()->to('adminAuth.lend');
+    }
 
     
 }

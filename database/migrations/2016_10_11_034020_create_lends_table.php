@@ -13,7 +13,7 @@ class CreateLendsTable extends Migration
     public function up()
     {
         Schema::create('lends',function(Blueprint $table){
-            $table->increments('user_id');
+            $table->increments('id');
             $table->string('title');
             $table->timestamps();
         });
@@ -24,6 +24,7 @@ class CreateLendsTable extends Migration
      *
      * @return void
      */
+    
     public function down()
     {
         Schema::drop('lends');
